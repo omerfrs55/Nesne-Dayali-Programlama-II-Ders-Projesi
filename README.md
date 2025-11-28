@@ -119,6 +119,6 @@ Uygulama arka planda aşağıdaki SQLite tablolarını kullanır:
 
 -----
 
-**Geliştirici:** [Ömer Faruk Sağlam]
+**Geliştirici:** Ömer Faruk Sağlam
 **Ders:** Nesneye Yönelik Programlama - II
 **Tarih:** Kasım 2025
