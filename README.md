@@ -1,42 +1,40 @@
------
-
 # SmartLibrary - Akıllı Kütüphane Yönetim Sistemi
 
 Bu proje, **Nesneye Yönelik Programlama (OOP)** dersi kapsamında geliştirilmiş, Java tabanlı masaüstü konsol uygulamasıdır. **JDBC** ve **SQLite** kullanılarak veri kalıcılığı sağlanmış, kütüphane işlemlerinin (kitap, öğrenci, ödünç alma) yönetimi simüle edilmiştir.
 
 ## Proje Hakkında
 
-**SmartLibrary**, üniversite kütüphanesindeki temel iş akışlarını dijitalleştirmeyi amaçlar. Sistem; kitapların kaydını tutar, öğrencileri sisteme ekler ve kitap ödünç alma/iade etme süreçlerini tarih bazlı olarak takip eder.
+**SmartLibrary**, üniversite kütüphanesindeki temel iş akışlarını dijitalleştirmeyi amaçlar. Sistem; kitapların kaydını tutar, öğrencileri sisteme ekler, silebilir ve kitap ödünç alma/iade etme süreçlerini tarih bazlı olarak takip eder.
 
 ### Kullanılan Teknolojiler ve Araçlar
 
-  * **Dil:** Java (JDK 17 / 8 uyumlu)
-  * **IDE:** Visual Studio Code
-  * **Veritabanı:** SQLite
-  * **Kütüphane:** SQLite JDBC Driver (`sqlite-jdbc-xxxx.jar`)
-  * **Mimari:** Katmanlı Mimari (Entities, Repositories, Database Access)
+* **Dil:** Java (JDK 17 / 8 uyumlu)
+* **IDE:** Visual Studio Code
+* **Veritabanı:** SQLite
+* **Kütüphane:** SQLite JDBC Driver (`sqlite-jdbc-xxxx.jar`)
+* **Mimari:** Katmanlı Mimari (Entities, Repositories, Database Access)
 
------
+---
 
 ## Özellikler (Beklenenler ve Karşılananlar)
 
-Bu proje, ders gereksinimlerinde belirtilen aşağıdaki teknik şartları tam olarak sağlar:
+Bu proje, ders gereksinimlerinde belirtilen teknik şartları tam olarak sağlar:
 
-  * **Sınıf ve Nesne Yapısı:** `Book`, `Student`, `Loan` sınıfları ile veri modellemesi.
-  * **Encapsulation (Kapsülleme):** Private değişkenler ve Getter/Setter kullanımı.
-  * **Repository Pattern:** Veri tabanı işlemleri (CRUD) `Repository` sınıfları içinde ayrıştırılmıştır.
-  * **JDBC & SQLite:** Veriler uçucu bellekte değil, `smartlibrary.db` dosyasında saklanır.
-  * **Koleksiyonlar:** Veriler listelenirken `ArrayList` yapısı kullanılmıştır.
-  * **Otomatik Tablo Oluşturma:** Uygulama ilk açıldığında veritabanı tabloları yoksa otomatik oluşturur.
-  * **Kontrol Mekanizmaları:** Bir kitap ödünçteyken başkasına verilmesi engellenir.
+* **Sınıf ve Nesne Yapısı:** `Book`, `Student`, `Loan` sınıfları ile veri modellemesi.
+* **Encapsulation (Kapsülleme):** Private değişkenler ve Getter/Setter kullanımı.
+* **Repository Pattern:** Veri tabanı işlemleri (Ekleme, Listeleme, Silme) `Repository` sınıfları içinde ayrıştırılmıştır.
+* **JDBC & SQLite:** Veriler uçucu bellekte değil, `smartlibrary.db` dosyasında saklanır.
+* **Koleksiyonlar:** Veriler listelenirken `ArrayList` yapısı kullanılmıştır.
+* **Otomatik Tablo Oluşturma:** Uygulama ilk açıldığında veritabanı tabloları yoksa otomatik oluşturur.
+* **Kontrol Mekanizmaları:** Bir kitap ödünçteyken başkasına verilmesi engellenir.
 
------
+---
 
 ## Proje Yapısı
 
 Proje dosyaları aşağıdaki gibi yapılandırılmıştır:
 
-```
+```text
 SmartLibrary/
 │
 ├── smartlibrary.db          # Proje çalışınca otomatik oluşan veritabanı dosyası
@@ -50,10 +48,10 @@ SmartLibrary/
 ├── Student.java             # Öğrenci nesnesi (Entity)
 ├── Loan.java                # Ödünç alma işlemi nesnesi (Entity)
 │
-├── BookRepository.java      # Kitap tablosu CRUD işlemleri
-├── StudentRepository.java   # Öğrenci tablosu CRUD işlemleri
+├── BookRepository.java      # Kitap işlemleri (Ekle, Sil, Listele)
+├── StudentRepository.java   # Öğrenci işlemleri (Ekle, Sil, Listele)
 └── LoanRepository.java      # Ödünç alma/verme işlemleri
-```
+````
 
 -----
 
@@ -108,17 +106,21 @@ Uygulama arka planda aşağıdaki SQLite tablolarını kullanır:
 
 -----
 
-## Kullanım Senaryosu
+## Kullanım Senaryosu ve Menü
 
-1.  **Kitap Ekle:** Menüden 1'i seçin, kitap bilgilerini girin.
-2.  **Öğrenci Ekle:** Menüden 3'ü seçin, öğrenci bilgilerini girin.
-3.  **Listeleme:** 2 ve 4 ile kayıtlı verileri görebilirsiniz (ID numaralarına dikkat edin).
-4.  **Ödünç Ver:** Menüden 5'i seçin. Kitap ID ve Öğrenci ID girerek işlemi tamamlayın.
+1.  **Kitap Ekle:** Kütüphaneye yeni kitap eklenir.
+2.  **Kitapları Listele:** Tüm kitaplar listelenir.
+3.  **Öğrenci Ekle:** Yeni öğrenci kaydı yapılır.
+4.  **Öğrencileri Listele:** Tüm öğrenciler listelenir.
+5.  **Kitap Ödünç Ver:** Kitap ID ve Öğrenci ID ile işlem yapılır.
       * *Not: Eğer kitap zaten başkasındaysa sistem uyarı verecektir.*
-5.  **İade Al:** Menüden 7'yi seçin. Kitap ID ve iade tarihini girerek kaydı kapatın.
+6.  **Ödünç Listesini Görüntüle:** Kim hangi kitabı almış listelenir.
+7.  **Kitap Geri Teslim Al:** Kitap iade tarihi girilerek süreç tamamlanır.
+8.  **Kitap Sil:** ID numarası girilen kitap veritabanından silinir.
+9.  **Öğrenci Sil:** ID numarası girilen öğrenci veritabanından silinir.
 
 -----
 
 **Geliştirici:** Ömer Faruk Sağlam
-**Ders:** Nesneye Yönelik Programlama - II
+**Ders:** Nesne Dayalı Programlama II
 **Tarih:** Kasım 2025
