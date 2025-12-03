@@ -1,4 +1,4 @@
-# SmartLibrary - Akıllı Kütüphane Yönetim Sistemi
+# Kütüphane Yönetim Sistemi
 
 Bu proje, **Nesneye Yönelik Programlama (OOP)** dersi kapsamında geliştirilmiş, Java tabanlı masaüstü konsol uygulamasıdır. **JDBC** ve **SQLite** kullanılarak veri kalıcılığı sağlanmış, kütüphane işlemlerinin (kitap, öğrenci, ödünç alma) yönetimi simüle edilmiştir.
 
